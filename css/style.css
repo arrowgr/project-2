@@ -161,8 +161,18 @@ ul {
   padding: 10px;
   width: 200px;
   display: none;
+<<<<<<< HEAD
 }
 
+=======
+  border-radius: 50%;
+}
+
+.project-entry img {
+    max-width: 300px;
+    width: 100%;
+}
+>>>>>>> origin/master
 img {
   padding: 10px;
 }
