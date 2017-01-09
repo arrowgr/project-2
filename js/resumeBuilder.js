@@ -76,7 +76,7 @@ var work = {
 			"title": "Web Developer",
 			"location": "California, Carlsbad, Usa",
 			"datesWorked": "December 2015 - December 2016",
-			"description": "I work with Impedime for 1 year my resposibility was to fix the odl website and create the new. " +
+			"description": "I work with ImpediMed for 1 year my resposibility was to fix the old website and create the new. " +
 			"In the year i was there i rebuild the impedimed.com, but i create and the hellosozo.com, blog.hellosozo.com and investor.impedimed.com."
 			
 
@@ -99,7 +99,7 @@ var work = {
 			"description": "I was hired to work on Elecnet S.A.. i work on website to update and fix everyday issues. " 
 	
 		},
-		{
+{
 			"employer": "Healthypharmacy",
 			"title": "Web Developer",
 			"location": "Center, Thessaloniki, Greece",
@@ -139,6 +139,139 @@ function displayWork() {
 
 displayWork();
 
+var projects = {
+	"projects": [
+		{
+			"title": "Nefeli",
+			"datesWorked": "October 2016",
+			"description": "Created an online portfolio of work as part of Udacity's Front-End Web Developer " ,
+			"images": ["images/nefeli.jpg"],
+			"url": "#"
+		},
+		{
+			"title": "Animal trading cards master",
+			"datesWorked": "October 2016",
+			"description": "Created an Animal trading cards  of work as part of Udacity's Front-End Web Developer " +
+			"Nanodegree.",
+			"images": ["images/animal.jpg"],
+			"url": "#"
+		},
+		{
+			"title": "Future html template",
+			"datesWorked": "September 2016",
+			"description": "Created an Future html template. ",
+			"images": ["images/future.jpg"],
+			"url": "#"
+		}
+	]
+};
+
+projects.display = function() {
+	if(projects.projects.length > 0) {
+		for(i in projects.projects) {
+			$("#projects").append(HTMLprojectStart);
+
+			var ProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title).replace("#", projects.projects[i].url);
+			var ProjectDates = HTMLprojectDates.replace("%data%", projects.projects[i].datesWorked);
+			var ProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
+
+			$(".project-entry:last").append(ProjectTitle);
+			$(".project-entry:last").append(ProjectDates);
+			$(".project-entry:last").append(ProjectDescription);
+
+			for(img in projects.projects[i].images) {
+				var ProjectImage = HTMLprojectImage.replace("%data%", projects.projects[i].images[img]);
+				$(".project-entry:last").append(ProjectImage);
+			}
+			
+
+		}
+	}
+};
+
+projects.display();
+
+
+var education = {
+	"schools": [
+		{ "name": "Hellenic Open University",
+			"datesAttended": "2013 - Current",
+			"location": "Patra, Greece",
+			"degree": "B.Sc. Computer Science",
+			"major": "Computer Science",
+			"url": "www.eap.gr"
+		}		
+	],
+	"onlineCourses": [
+		{ "school": "Udacity",
+			"title": "Javascript Basics",
+			"completed": "January 2017",
+			"url": "https://www.udacity.com/course/ud804"
+		},
+		{ "school": "Udacity",
+			"title": "Intro to jQuery",
+			"completed": "December 2016",
+			"url": "https://www.udacity.com/course/ud245"
+		},	
+		{ "school": "Udacity",
+			"title": "Intro to HTML and CSS",
+			"completed": "December 2016",
+			"url": "https://www.udacity.com/course/ud304"
+		},	
+		{ "school": "Udacity",
+			"title": "Responsive Images",
+			"completed": "November 2016",
+			"url": "https://www.udacity.com/course/ud882"
+		},
+	
+		
+	]
+};
+
+education.display = function() {
+	if(education.schools.length > 0 || education.onlineCourses.length > 0) {
+		for(i in education.schools) {
+			$("#education").append(HTMLschoolStart);
+
+			var SchoolName = HTMLschoolName.replace("%data%", education.schools[i].name).replace("#", education.schools[i].url);
+			var SchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree);
+			var SchoolDates = HTMLschoolDates.replace("%data%", education.schools[i].datesAttended);
+			var SchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[i].location);			
+			var SchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[i].major);
+		
+
+			$(".education-entry:last").append(SchoolName + SchoolDegree);
+			$(".education-entry:last").append(SchoolDates);
+			$(".education-entry:last").append(SchoolLocation);
+			$(".education-entry:last").append(SchoolMajor);
+		
+		}
+
+		if(education.onlineCourses.length > 0) {
+			$("#education").append(HTMLonlineClasses);
+			for(i in education.onlineCourses) {				
+				$("#education").append(HTMLschoolStart);
+				var OnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[i].title).replace("#", education.onlineCourses[i].url);
+				var OnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school);
+				var OnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[i].completed);
+				var OnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[i].url).replace("#", education.onlineCourses[i].url);
+
+				$(".education-entry:last").append(OnlineTitle + OnlineSchool);
+				$(".education-entry:last").append(OnlineDates);
+				$(".education-entry:last").append(OnlineURL);
+			}
+		}
+		
+	}
+};
+
+education.display();
+
+$("#mapDiv").append(googleMap);
+
+
+
+/*
 var projects  = {
 	"title": "title",
 	"dates": "dates",
@@ -154,7 +287,7 @@ var projects  = {
 };
 
 
- 
+ */
  /*function loopwork (){
  $("#workExperience").append(HTMLworkStart);
 }

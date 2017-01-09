@@ -4,14 +4,16 @@
 <head>
   <meta charset="utf-8">
   <title>Giorgos Mitsoudis</title>
-
+  <link rel="icon" href="images/me.jpg" type="image/x-jpg">
   <!-- Load the page styles. -->
   <link href="css/style.css" rel="stylesheet">
 
-<script src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCPRxCf5LqmiAAYgeO9Rlyc91zmER3WpzY&callback=initMap"
-    async defer></script>
+
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Giorgos Mitsoudis Portofolio">
+  <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+  <meta name="author" content="Giorgos Mitsoudis">
 </head>
 <body>
   <div id="main">
@@ -69,6 +71,7 @@
   dynamically when this website, index.html, is opened.
   -->
   <script src="js/resumeBuilder.js"></script>
+  <script src="js/location.js"></script>
 
 
   <!--
@@ -116,5 +119,6 @@
       document.getElementById('mapDiv').style.display = 'none';
     }
   </script>
+  <script async defer src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCPRxCf5LqmiAAYgeO9Rlyc91zmER3WpzY&callback=initMap"></script>
 </body>
 </html>
