@@ -1,7 +1,7 @@
 var img ;
 var i =0;
 var bio = {
-	"name": "Giorgos Mitsoudis",
+	"biopic ": "Giorgos Mitsoudis",
 	"role": "Front End Developer",
 	"contacts": {
 		"email": "mitsoudis_g@hotmail.com",
@@ -10,15 +10,15 @@ var bio = {
 		"location": "Thessaloniki, Greece"
 	},
 	"picture": "images/me.jpg",
-	"welcome": "Code like fears are often just an illusion",
+	"welcomeMessage": "Code like fears are often just an illusion",
 	"skills": ["Html", "Css", "Javascript", "PhP", "Mysql", "Wordpress", "Magento", "Joomla!"]
 };
 
 
-var nameme = HTMLheaderName.replace("%data%", bio.name);
+var nameme = HTMLheaderName.replace("%data%", bio.biopic);
 var role = HTMLheaderRole.replace("%data%", bio.role);
 var profileimage = HTMLbioPic.replace("%data%", bio.picture);
-var message = HTMLwelcomeMsg.replace("%data%", bio.welcome);
+var message = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 
 
 $("#header").prepend(profileimage);
@@ -42,7 +42,8 @@ contactinfo.push(HTMLlocation.replace("%data%", bio.contacts.location));
 if(bio.skills.length > 0) {
 	$("#header").append(HTMLskillsStart);
 
-	for(i in bio.skills) {
+	for (i=0 ; i < bio.skills.length; i++) {
+		
 		
 		if(bio.skills.hasOwnProperty(i)) {
       $("#skills").append(HTMLskills.replace("%data%", bio.skills[i]));
@@ -51,7 +52,8 @@ if(bio.skills.length > 0) {
 		
 	}
 }
-for(i in contactinfo) {
+// for(i in contactinfo) {
+	for (i=0 ; i < contactinfo.length; i++) {
 		if(contactinfo.hasOwnProperty(i)) {
 	$("#topContacts").append(contactinfo[i]);
 	$("#footerContacts").append(contactinfo[i]);
@@ -63,7 +65,7 @@ var work = {
 			"employer": "Vita4you",
 			"title": "Web Developer",
 			"location": "Kalamaria, Thessaloniki, Greece",
-			"datesWorked": "July 2013 - Current",
+			"dates": "July 2013 - Current",
 			"description": "I was hired on Vita4you only to fix few issues on the website they had. " +
 			"After one month they ask me if i want to work every day for them and improve the website, "+
 			"now i am there 3 years ago and we work on many thing like adwords, inbound marketing, improve website."
@@ -73,7 +75,7 @@ var work = {
 			"employer": "Doca",
 			"title": "Web Developer",
 			"location": "Oreokatro, Thessaloniki, Greece",
-			"datesWorked": "April 2013 - Current",
+			"dates": "April 2013 - Current",
 			"description": "I was hired to work on Doca, i work on Digital marketing  department. " +
 			"Every day it is on mine resposipility to create Adwords Campaigns and improve the websites "+
 			"now we have create 4 website 2 of them are Eccomerce one for B2B and one for B2C."
@@ -83,7 +85,7 @@ var work = {
 			"employer": "ImpediMed inc",
 			"title": "Web Developer",
 			"location": "California, Carlsbad, Usa",
-			"datesWorked": "December 2015 - December 2016",
+			"dates": "December 2015 - December 2016",
 			"description": "I work with ImpediMed for 1 year my resposibility was to fix the old website and create the new. " +
 			"In the year i was there i rebuild the impedimed.com, but i create and the hellosozo.com, blog.hellosozo.com and investor.impedimed.com."
 			
@@ -93,7 +95,7 @@ var work = {
 			"employer": "JensFabuloussStuff",
 			"title": "Web Developer",
 			"location": "Brooklyn, New York, Usa",
-			"datesWorked": "January 2012 - July 2013",
+			"dates": "January 2012 - July 2013",
 			"description": "I was hired to work on JensFabuloussStuff from the Adoramapix, i work on website to update and fix everyday issues. " 
 
 	
@@ -103,7 +105,7 @@ var work = {
 			"employer": "Elecnet S.A.",
 			"title": "Web Developer",
 			"location": "Oreokatro, Thessaloniki, Greece",
-			"datesWorked": "July 2012 - July 2016",
+			"dates": "July 2012 - July 2016",
 			"description": "I was hired to work on Elecnet S.A.. i work on website to update and fix everyday issues. " 
 	
 		},
@@ -111,7 +113,7 @@ var work = {
 			"employer": "Healthypharmacy",
 			"title": "Web Developer",
 			"location": "Center, Thessaloniki, Greece",
-			"datesWorked": "May 2010 - February 2011",
+			"dates": "May 2010 - February 2011",
 			"description": "I was hired to work on JensFabuloussStuff from the Adoramapix, i work on website to update and fix everyday issues. " 
 	
 		}
@@ -120,25 +122,26 @@ var work = {
 	]
 };
 
-function displayWork() {
 
+work.display = function() {
 	if(work.jobs.length > 0) {
 	
 		$("#workExperience").append(HTMLworkStart);
 
-		for(i in work.jobs) {
+	//	for(i in work.jobs) {
+		for (i=0 ; i < work.jobs.length; i++) {	
 				if(work.jobs.hasOwnProperty(i)) {
 			var workEmployer = HTMLworkEmployer.replace("%data%", work.jobs[i].employer);
 			var workTitle = HTMLworkTitle.replace("%data%", work.jobs[i].title);
 			var workLocation = HTMLworkLocation.replace("%data%", work.jobs[i].location);
-			var datesWorked = HTMLworkDates.replace("%data%", work.jobs[i].datesWorked);
+			var dates = HTMLworkDates.replace("%data%", work.jobs[i].dates);
 			var workDescription = HTMLworkDescription.replace("%data%", work.jobs[i].description);
 
 			var EmployerWorkTitle = workEmployer + workTitle;
 
 			$(".work-entry:last").append(EmployerWorkTitle);
 			$(".work-entry:last").append(workLocation);
-			$(".work-entry:last").append(datesWorked);
+			$(".work-entry:last").append(dates);
 			$(".work-entry:last").append(workDescription);
 		}}
 
@@ -146,20 +149,20 @@ function displayWork() {
 
 }
 
-displayWork();
+work.display();
 
 var projects = {
 	"projects": [
 		{
 			"title": "Nefeli",
-			"datesWorked": "October 2016",
+			"dates": "October 2016",
 			"description": "Created an online portfolio of work as part of Udacity's Front-End Web Developer " ,
 			"images": ["images/nefeli.jpg"],
 			"url": "#"
 		},
 		{
 			"title": "Animal trading cards master",
-			"datesWorked": "October 2016",
+			"dates": "October 2016",
 			"description": "Created an Animal trading cards  of work as part of Udacity's Front-End Web Developer " +
 			"Nanodegree.",
 			"images": ["images/animal.jpg"],
@@ -167,7 +170,7 @@ var projects = {
 		},
 		{
 			"title": "Future html template",
-			"datesWorked": "September 2016",
+			"dates": "September 2016",
 			"description": "Created an Future html template. ",
 			"images": ["images/future.jpg"],
 			"url": "#"
@@ -177,19 +180,21 @@ var projects = {
 
 projects.display = function() {
 	if(projects.projects.length > 0) {
-		for(i in projects.projects) {
+	// 	for(i in projects.projects) {
+			for (i=0 ; i < projects.projects.length; i++) {	
 			if(projects.projects.hasOwnProperty(i)) {
 			$("#projects").append(HTMLprojectStart);
 
 			var ProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title).replace("#", projects.projects[i].url);
-			var ProjectDates = HTMLprojectDates.replace("%data%", projects.projects[i].datesWorked);
+			var ProjectDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
 			var ProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
 
 			$(".project-entry:last").append(ProjectTitle);
 			$(".project-entry:last").append(ProjectDates);
 			$(".project-entry:last").append(ProjectDescription);
 
-			for(img in projects.projects[i].images) {
+			// for(img in projects.projects[i].images) {
+			for (img=0 ; img < projects.projects[i].images.length; img++) {		
 					if(projects.projects[i].images.hasOwnProperty(img)) {
 				var ProjectImage = HTMLprojectImage.replace("%data%", projects.projects[i].images[img]);
 				$(".project-entry:last").append(ProjectImage);
@@ -210,28 +215,28 @@ var education = {
 			"location": "Patra, Greece",
 			"degree": "B.Sc. Computer Science",
 			"major": "Computer Science",
-			"url": "www.eap.gr"
+			"url": "http://www.eap.gr"
 		}		
 	],
 	"onlineCourses": [
 		{ "school": "Udacity",
 			"title": "Javascript Basics",
-			"completed": "January 2017",
+			"dates": "January 2017",
 			"url": "https://www.udacity.com/course/ud804"
 		},
 		{ "school": "Udacity",
 			"title": "Intro to jQuery",
-			"completed": "December 2016",
+			"dates": "December 2016",
 			"url": "https://www.udacity.com/course/ud245"
 		},	
 		{ "school": "Udacity",
 			"title": "Intro to HTML and CSS",
-			"completed": "December 2016",
+			"dates": "December 2016",
 			"url": "https://www.udacity.com/course/ud304"
 		},	
 		{ "school": "Udacity",
 			"title": "Responsive Images",
-			"completed": "November 2016",
+			"dates": "November 2016",
 			"url": "https://www.udacity.com/course/ud882"
 		},
 	
@@ -241,7 +246,8 @@ var education = {
 
 education.display = function() {
 	if(education.schools.length > 0 || education.onlineCourses.length > 0) {
-		for(i in education.schools) {
+		//for(i in education.schools) {
+			for (i=0 ; i < education.schools.length; i++) {	
 			if(education.schools.hasOwnProperty(i)) {
 			$("#education").append(HTMLschoolStart);
 
@@ -261,12 +267,13 @@ education.display = function() {
 
 		if(education.onlineCourses.length > 0) {
 			$("#education").append(HTMLonlineClasses);
-			for(i in education.onlineCourses) {		
+			// for(i in education.onlineCourses) {	
+				for (i=0 ; i < education.onlineCourses.length; i++) {	
 				if(education.onlineCourses.hasOwnProperty(i)) {
 				$("#education").append(HTMLschoolStart);
 				var OnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[i].title).replace("#", education.onlineCourses[i].url);
 				var OnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school);
-				var OnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[i].completed);
+				var OnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[i].dates);
 				var OnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[i].url).replace("#", education.onlineCourses[i].url);
 
 				$(".education-entry:last").append(OnlineTitle + OnlineSchool);
