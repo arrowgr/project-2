@@ -1,7 +1,7 @@
 var img ;
 var i =0;
 var bio = {
-	"biopic ": "Giorgos Mitsoudis",
+	"name": "Giorgos Mitsoudis",
 	"role": "Front End Developer",
 	"contacts": {
 		"email": "mitsoudis_g@hotmail.com",
@@ -9,20 +9,20 @@ var bio = {
 		"twitter": "@arrowgr",
 		"location": "Thessaloniki, Greece"
 	},
-	"picture": "images/me.jpg",
+	"biopic": "images/me.jpg",
 	"welcomeMessage": "Code like fears are often just an illusion",
 	"skills": ["Html", "Css", "Javascript", "PhP", "Mysql", "Wordpress", "Magento", "Joomla!"]
 };
 
-
-var nameme = HTMLheaderName.replace("%data%", bio.biopic);
+bio.display = function() {
+var bioname = HTMLheaderName.replace("%data%", bio.name);
 var role = HTMLheaderRole.replace("%data%", bio.role);
-var profileimage = HTMLbioPic.replace("%data%", bio.picture);
+var profileimage = HTMLbioPic.replace("%data%", bio.biopic);
 var message = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 
 
 $("#header").prepend(profileimage);
-$("#header").prepend(nameme);
+$("#header").prepend(bioname);
 $("#header").append(role);
 $("#header").append(message);
 
@@ -58,6 +58,8 @@ if(bio.skills.length > 0) {
 	$("#topContacts").append(contactinfo[i]);
 	$("#footerContacts").append(contactinfo[i]);
 }}
+};
+ bio.display();
 
 var work = {
 	"jobs": [
@@ -147,7 +149,7 @@ work.display = function() {
 
 	}
 
-}
+};
 
 work.display();
 
@@ -211,10 +213,10 @@ projects.display();
 var education = {
 	"schools": [
 		{ "name": "Hellenic Open University",
-			"datesAttended": "2013 - Current",
+			"dates": "2013 - Current",
 			"location": "Patra, Greece",
 			"degree": "B.Sc. Computer Science",
-			"major": "Computer Science",
+			"major": ["Computer Science"],
 			"url": "http://www.eap.gr"
 		}		
 	],
@@ -253,7 +255,7 @@ education.display = function() {
 
 			var SchoolName = HTMLschoolName.replace("%data%", education.schools[i].name).replace("#", education.schools[i].url);
 			var SchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree);
-			var SchoolDates = HTMLschoolDates.replace("%data%", education.schools[i].datesAttended);
+			var SchoolDates = HTMLschoolDates.replace("%data%", education.schools[i].dates);
 			var SchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[i].location);			
 			var SchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[i].major);
 		
